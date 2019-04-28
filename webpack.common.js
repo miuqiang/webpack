@@ -3,6 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 // const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
     entry: {
@@ -13,6 +15,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'tot module replacement'
         }),
+        new MiniCssExtractPlugin({
+            filename: 'main.css'
+        })
     ],
     optimization: {
         splitChunks: {
