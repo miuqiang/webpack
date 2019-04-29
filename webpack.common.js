@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
-        app:'./src/index.js',
+        app:'./src/js/index.js',
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -16,7 +16,8 @@ module.exports = {
             title: 'tot module replacement'
         }),
         new MiniCssExtractPlugin({
-            filename: 'main.css'
+            filename: "[name].[chunkhash].css",
+            chunkFilename: "[id].css"
         })
     ],
     optimization: {
@@ -38,7 +39,7 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader','css-loader']
+                use: [MiniCssExtractPlugin.loader,'css-loader']
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
